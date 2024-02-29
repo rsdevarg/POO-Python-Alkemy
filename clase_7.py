@@ -7,9 +7,9 @@ class Tipo(Enum):
 
 class Fabrica:
   def __init__(self):
-    sucursales = []
-  def agregarSucursal(self):
-    pass
+    self.sucursales = []
+  def agregarSucursal(self, sucursal):
+    self.sucursales.append(sucursal)
   def listarInstrumentos(self):
     pass
   def instrumentosPorTipo(self):
@@ -23,7 +23,7 @@ class Sucursal:
   def __init__(self, nombre):
     self.nombre = nombre
     self.instrumentos = []
-  
+
   def agregarInstrumento(self, instrumento):
     self.instrumentos.append(instrumento)
 class Instrumento:
@@ -35,11 +35,15 @@ class Instrumento:
 ins = Instrumento(1, 100, Tipo.CAT1)
 suc = Sucursal("Sucursal 1")
 suc.agregarInstrumento(ins)
+fab = Fabrica()
+fab.agregarSucursal(suc)
 
-'''
-print(f'
-ID: {suc.instrumentos[0].id}
-Precio: {suc.instrumentos[0].precio}
-Tipo: {suc.instrumentos[0].tipo.value}
-')
-'''
+#'''
+print(f'''
+Sucursal: {suc.nombre}
+Instrumentos:
+ID: {fab.sucursales[0].instrumentos[0].id}
+Precio: {fab.sucursales[0].instrumentos[0].precio}
+Tipo: {fab.sucursales[0].instrumentos[0].tipo.value}
+''')
+#'''
